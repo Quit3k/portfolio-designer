@@ -1,0 +1,136 @@
+.contact-section {
+    padding: 120px 0;
+    background: radial-gradient(circle at center, #382C25 0%, #110f12 85%);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.contact-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.contact-section .section-title {
+  font-family: var(--font-primary);
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--color-text);
+}
+.contact-section .section-title .highlight {
+  color: var(--color-primary);
+}
+.contact-section .section-subtitle {
+  color: var(--color-muted);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ZMIANA UKŁADU: Zamieniamy miejscami kolumny */
+.contact-layout {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr; /* Formularz jest teraz szerszy */
+    gap: 80px; /* Zwiększamy odstęp */
+    align-items: flex-start;
+}
+
+/* --- PRAWA STRONA: Kontener na zdjęcie i kafelki --- */
+.contact-details-wrapper {
+    position: relative;
+    /* ZMIANA: Zwiększamy odstęp z 200px na 340px, aby zrobić miejsce na zdjęcie */
+    padding-top: 340px;
+}
+
+/* --- NOWE STYLE DLA ZDJĘCIA --- */
+.contact-image {
+    position: absolute;
+    /* Pozycjonujemy zdjęcie na środku w poziomie, na górze kontenera */
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 300px; /* Zmniejszamy rozmiar, aby lepiej pasowało */
+    height: 300px;
+    border-radius: 50%;
+    /* Pamiętaj, aby dodać zdjęcie Wisza3.png do folderu assets! */
+    background: url('../assets/Wisza3.png') no-repeat center center;
+    background-size: cover;
+    box-shadow: 0 20px 60px rgba(232, 122, 62, 0.3); /* Używamy naszego koloru --color-primary */
+    animation: contactImageFloat 8s ease-in-out infinite;
+    border: 4px solid rgba(243, 169, 94, 0.4); /* Używamy naszego koloru --color-secondary */
+}
+
+/* Animacja dla zdjęcia */
+@keyframes contactImageFloat {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-20px); }
+}
+
+
+.contact-info-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    transition: var(--transition-smooth);
+}
+
+.contact-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--color-primary);
+    transform: scale(1.02);
+}
+
+.contact-card-icon {
+    font-size: 1.5rem;
+}
+
+.contact-card-text {
+    font-size: 1.1rem;
+    color: var(--color-text);
+    font-weight: 500;
+}
+
+
+/* --- LEWA STRONA: Formularz --- */
+.form-group { margin-bottom: 25px; }
+.form-group label { display: block; margin-bottom: 10px; color: var(--color-muted); font-size: 0.9rem; }
+.form-group input, .form-group textarea { width: 100%; padding: 18px; background: #0D0C0F; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: var(--border-radius); color: var(--color-text); font-size: 1rem; font-family: var(--font-secondary); transition: var(--transition-smooth); }
+.form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 15px rgba(232, 122, 62, 0.2); }
+.form-group textarea { resize: vertical; }
+.form-group-checkbox { display: flex; align-items: center; gap: 12px; margin-bottom: 30px; }
+.form-group-checkbox input[type="checkbox"] { appearance: none; -webkit-appearance: none; width: 22px; height: 22px; background-color: #0D0C0F; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 6px; cursor: pointer; position: relative; transition: var(--transition-smooth); }
+.form-group-checkbox input[type="checkbox"]:checked { background-color: var(--color-primary); border-color: var(--color-primary); }
+.form-group-checkbox input[type="checkbox"]:checked::before { content: '✔'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: var(--color-background); font-size: 16px; }
+.form-group-checkbox label { margin: 0; color: var(--color-muted); cursor: pointer; }
+.submit-btn { width: 100%; padding: 18px; background: var(--color-primary); color: var(--color-background); border: none; border-radius: var(--border-radius); font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: var(--transition-smooth); }
+.submit-btn:hover { background: var(--color-secondary); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+
+/* --- Style dla cząsteczek (bez zmian) --- */
+.contact-particle-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
+.contact-particle { position: absolute; border-radius: 50%; background: var(--color-primary); animation: contact-float 25s infinite ease-in-out; opacity: 0; box-shadow: 0 0 15px var(--color-primary); }
+.contact-particle:nth-child(1) { width: 60px; height: 60px; left: 8%; top: 10%; animation-duration: 18s; }
+.contact-particle:nth-child(2) { width: 25px; height: 25px; left: 12%; top: 80%; animation-duration: 10s; animation-delay: 2s; border-radius: 5px; }
+.contact-particle:nth-child(3) { width: 100px; height: 100px; right: 5%; top: 15%; animation-duration: 15s; animation-delay: 1s; }
+.contact-particle:nth-child(4) { width: 45px; height: 45px; right: 15%; top: 85%; animation-duration: 10s; animation-delay: 4s; border-radius: 10px; }
+.contact-particle:nth-child(5) { width: 15px; height: 15px; left: 3%; top: 50%; animation-duration: 11s; animation-delay: 3s; }
+.contact-particle:nth-child(6) { width: 70px; height: 70px; right: 2%; top: 60%; animation-duration: 12s; animation-delay: 2s; }
+.contact-particle:nth-child(7) { width: 35px; height: 35px; left: 18%; top: 30%; animation-duration: 16s; animation-delay: 2s; border-radius: 2px;}
+.contact-particle:nth-child(8) { width: 80px; height: 80px; right: 12%; top: 40%; animation-duration: 11s; animation-delay: 1s; }
+@keyframes contact-float { 0% { transform: translateY(20px) rotate(0deg); opacity: 0; } 50% { transform: translateY(-100px) rotate(160deg); opacity: 0.15; } 100% { transform: translateY(20px) rotate(360deg); opacity: 0; } }

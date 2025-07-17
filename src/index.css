@@ -1,0 +1,58 @@
+/* Importuj fonty z Google Fonts na górze pliku CSS */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Playfair+Display:wght@700&display=swap');
+
+/* :root definiuje globalne zmienne CSS dla całego projektu */
+:root {
+  /* Paleta kolorów zainspirowana zdjęciem */
+  --color-background: #0D0C0F; /* Głęboka, niemal czarna szarość z tła */
+  --color-text: #EAE2D8;       /* Ciepła, złamana biel dla tekstu */
+  --color-primary: #E87A3E;    /* Główny, kinowy pomarańcz */
+  --color-secondary: #F3A95E;  /* Jaśniejszy, akcentujący pomarańcz/złoto */
+  --color-muted: #857f78;      /* Stonowany kolor dla mniej ważnych tekstów */
+
+  /* Typografia */
+  --font-primary: 'Playfair Display', serif;
+  --font-secondary: 'Inter', sans-serif;
+
+  /* Inne zmienne */
+  --border-radius: 12px;
+  --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Zapewnia, że nawigacja nie zasłania sekcji po kliknięciu */
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-secondary);
+  overflow-x: hidden; /* Zapobiega poziomemu przewijaniu */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Animacja pojawiania się elementów przy scrollowaniu */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

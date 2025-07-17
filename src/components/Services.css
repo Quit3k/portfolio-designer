@@ -1,0 +1,138 @@
+.services-section {
+  padding: 120px 0;
+  /* background: radial-gradient(circle at center, #ac6130 0%, #110f12 0%); */
+  background: radial-gradient(circle at center, #382C25 0%, #110f12 85%);
+  /* background: radial-gradient(ellipse at center, #ac6130 0%, var(--color-background) 70%); */
+  position: relative;
+  overflow: hidden;
+}
+
+/* === KLUCZOWA POPRAWKA: Przywrócenie widoczności treści === */
+.services-section .container {
+  position: relative; /* Mówimy przeglądarce, żeby uwzględniła ten element w "warstwach" */
+  z-index: 2;       /* Ustawiamy go na wyższej warstwie niż cząsteczki (które mają z-index: 0) */
+}
+/* ========================================================== */
+
+.services-section .section-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.services-section .section-title {
+  font-family: var(--font-primary);
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(45deg, var(--color-text) 60%, var(--color-primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.services-section .section-title .highlight {
+    -webkit-text-fill-color: var(--color-primary);
+}
+
+.services-section .section-subtitle {
+  color: var(--color-muted);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+}
+
+.service-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.6s ease;
+  z-index: 2;
+}
+
+.service-card:hover::before {
+  left: 100%;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(232, 122, 62, 0.2);
+  border-color: rgba(232, 122, 62, 0.5);
+}
+
+.service-card .service-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: var(--color-primary);
+}
+
+.service-card h3 {
+  font-family: var(--font-primary);
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: var(--color-text);
+}
+
+.service-card p {
+  color: var(--color-muted);
+  line-height: 1.7;
+}
+
+/* === Style dla białych cząsteczek === */
+
+.services-particle-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* Cząsteczki są na warstwie 0, czyli w tle */
+}
+
+.services-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--color-text);
+  animation: services-float 20s infinite ease-in-out;
+  opacity: 0;
+  box-shadow: 0 0 15px var(--color-text);
+}
+
+.services-particle:nth-child(1) { width: 80px; height: 80px; left: 5%; top: 15%; animation-duration: 25s; }
+.services-particle:nth-child(2) { width: 30px; height: 30px; left: 15%; top: 70%; animation-duration: 18s; animation-delay: 3s; border-radius: 5px; }
+.services-particle:nth-child(3) { width: 120px; height: 120px; right: 8%; top: 20%; animation-duration: 22s; animation-delay: 1s; }
+.services-particle:nth-child(4) { width: 50px; height: 50px; right: 10%; top: 80%; animation-duration: 28s; animation-delay: 5s; border-radius: 10px; }
+.services-particle:nth-child(5) { width: 20px; height: 20px; left: 8%; top: 40%; animation-duration: 15s; animation-delay: 2s; }
+.services-particle:nth-child(6) { width: 60px; height: 60px; right: 5%; top: 55%; animation-duration: 10s; animation-delay: 4s; }
+.services-particle:nth-child(7) { width: 40px; height: 40px; left: 10%; top: 5%; animation-duration: 10s; animation-delay: 6s; }
+.services-particle:nth-child(8) { width: 70px; height: 70px; right: 15%; top: 65%; animation-duration: 14s; animation-delay: 8s; border-radius: 2px; }
+.services-particle:nth-child(9) { width: 25px; height: 25px; left: 10%; top: 90%; animation-duration: 10s; animation-delay: 1s; }
+.services-particle:nth-child(10) { width: 60px; height: 90px; right: 2%; top: 5%; animation-duration: 16s; animation-delay: 7s; border-radius: 8px; }
+.services-particle:nth-child(11) { width: 60px; height: 90px; left: 5%; top: 8%; animation-duration: 16s; animation-delay: 7s; border-radius: 8px; }
+
+@keyframes services-float {
+  0% { transform: translateY(20px) rotate(0deg); opacity: 0; }
+  50% { transform: translateY(-80px) rotate(180deg); opacity: 0.3; }
+  100% { transform: translateY(20px) rotate(360deg); opacity: 0; }
+}

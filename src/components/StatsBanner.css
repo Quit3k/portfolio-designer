@@ -1,0 +1,41 @@
+.stats-banner-section {
+    /* background-color: #00000; */
+    background: black;
+    padding: 70px 0;
+    border-top: 1px dotted rgba(232, 121, 62, 0.705);
+    border-bottom: 1px dotted rgba(232, 122, 62, 0.705);
+}
+
+.stats-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    
+    /* ZMIANA 1: Ograniczamy maksymalną szerokość kontenera i centrujemy go.
+       To sprawi, że elementy nie będą się rozjeżdżać na szerokich ekranach. */
+    max-width: 2000px;
+    margin: 0 auto;
+    justify-content: center;
+    gap: 80px; /* Zwiększamy odstęp dla lepszego wyglądu w ciaśniejszym układzie */
+}
+
+.stat-item {
+    text-align: center;
+    flex-basis: 250px;
+}
+
+.stat-number {
+    font-family: var(--font-primary);
+    font-size: 4.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    /* ZMIANA 2: Cały numer (wraz ze znakiem "+") jest teraz pomarańczowy */
+    color: var(--color-primary);
+}
+
+.stat-label {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--color-muted);
+    margin-top: 10px;
+}
