@@ -1,6 +1,7 @@
 .stats-banner-section {
     /* background-color: #00000; */
-    background: black;
+    /* background-color: #141417; */
+    background: #141417;
     padding: 70px 0;
     border-top: 1px dotted rgba(232, 121, 62, 0.705);
     border-bottom: 1px dotted rgba(232, 122, 62, 0.705);
@@ -38,4 +39,42 @@
     font-weight: 500;
     color: var(--color-muted);
     margin-top: 10px;
+}
+
+/* === STYLE RESPONSIVE DLA BANNERA === */
+
+@media (max-width: 768px) {
+    .stats-banner-section {
+        /* Zmniejszamy padding na mniejszych ekranach */
+        padding: 0px 0px 0px 0px;
+    }
+
+    .stat-item {
+    text-align: center;
+    flex-basis: 150px;
+}
+
+    .stats-container {
+        /* Zmieniamy układ na pionowy */
+        flex-direction: column;
+        /* Zmniejszamy odstęp między elementami */
+        gap: 10px;
+    }
+
+    .stat-number {
+        /* Zmniejszamy rozmiar liczb, aby pasowały do ekranu telefonu */
+        font-size: 3rem;
+    }
+
+    .stat-label {
+        /* Zmniejszamy rozmiar etykiet */
+        font-size: 1rem;
+    }
+
+    .stats-banner-section {
+    /* background-color: #00000; */
+    /* background-color: #141417; */
+    background: #141417;
+    padding: 70px 0px 20px;
+    }
 }

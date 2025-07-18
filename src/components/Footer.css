@@ -39,3 +39,19 @@
 .footer-links-right {
     display: flex;
 }
+
+/* === STYLE RESPONSIVE DLA STOPKI === */
+
+@media (max-width: 768px) {
+    .footer-container {
+        /* Zmieniamy układ na pionowy */
+        flex-direction: column;
+        /* Dodajemy odstęp między elementami */
+        gap: 50px;
+    }
+
+    .footer-copyright {
+        /* Upewniamy się, że tekst jest wyśrodkowany, jeśli złamie się na dwie linie */
+        text-align: center;
+    }
+}
