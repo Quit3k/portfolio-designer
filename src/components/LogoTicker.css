@@ -1,0 +1,69 @@
+.ticker-section {
+    background-color: #141417;
+    padding: 40px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ticker-wrap {
+    width: 100%;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent, white 20%, white 80%, transparent);
+    mask-image: linear-gradient(to right, transparent, white 20%, white 80%, transparent);
+}
+
+.ticker-track {
+    display: flex;
+    gap: 80px; /* Zwiększamy odstęp */
+    /* Szerokość paska jest teraz dynamiczna */
+    width: calc(300px * var(--logo-count, 10) * 2);
+    animation: ticker-scroll 60s linear infinite;
+}
+
+.ticker-track:hover {
+    animation-play-state: paused;
+}
+
+/* ZMIANA: Dostosowujemy kontener na logo i tekst */
+.ticker-item {
+    flex-shrink: 0;
+    width: auto; /* Szerokość dopasuje się do zawartości */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px; /* Odstęp między logo a tekstem */
+}
+
+/* ZMIANA: Usuwamy filtry, aby pokazać oryginalne kolory logo */
+.ticker-item img {
+    max-width: 80px;
+    height: 35px; /* Ustawiamy stałą wysokość */
+    transition: all 0.3s ease;
+    object-fit: contain;
+}
+
+.ticker-item:hover img {
+    transform: scale(1.1);
+}
+
+/* NOWY ELEMENT: Styl dla nazwy programu */
+.ticker-item-name {
+    color: var(--color-muted);
+    font-size: 1.1rem;
+    font-weight: 500;
+    white-space: nowrap; /* Zapobiega łamaniu się tekstu */
+    transition: color 0.3s ease;
+}
+
+.ticker-item:hover .ticker-item-name {
+    color: var(--color-text);
+}
+
+
+@keyframes ticker-scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-300px * var(--logo-count, 10)));
+    }
+}

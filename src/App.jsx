@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Process from './components/Process';
 import Services from './components/Services';
+import LogoTicker from './components/LogoTicker';
 import Portfolio from './components/Portfolio';
 import StatsBanner from './components/StatsBanner';
 import Contact from './components/Contact';
@@ -39,6 +40,7 @@ function App() {
         <Services />
         <StatsBanner />
         <Process />
+        <LogoTicker />
         <Portfolio />
         <Contact />
       </main>

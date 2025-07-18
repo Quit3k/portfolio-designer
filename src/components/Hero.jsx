@@ -1,13 +1,18 @@
 import React from 'react';
 import './Hero.css';
-import heroImage from '../assets/Wisza2.png'; // Pamiętaj, aby umieścić zdjęcie w folderze src/assets
+import heroCircleImage from '../assets/Wisza3.png';
 
 const Hero = () => {
   return (
-    <section id="hero" className="hero-section">
+    <section id="home" className="hero-section">
       <div className="hero-background"></div>
       <div className="container">
         <div className="hero-content">
+          <div 
+            className="hero-mobile-image" 
+            style={{ backgroundImage: `url(${heroCircleImage})` }}
+          ></div>
+
           <h1 className="hero-headline">
             Tworzymy wizualne historie, <br /> które <span className="highlight">napędzają Twój biznes.</span>
           </h1>
