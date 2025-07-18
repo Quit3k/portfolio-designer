@@ -1,9 +1,5 @@
-/* === NOWY, ULEPSZONY STYL DLA TICKERA === */
-
 .ticker-section {
-    /* ZMIANA: Styl dopasowany do banera ze statystykami */
     background-color: #141417;
-   
     padding: 25px 0;
     border-top: 1px dotted rgba(232, 122, 62, 1);
     border-bottom: 1px dotted rgba(232, 122, 62, 1);
@@ -19,16 +15,19 @@
 .ticker-track {
     display: flex;
     gap: 100px;
-     height: 200px;
-    width: max-content; /* Szerokość jest teraz w pełni dynamiczna */
+    height: 100px; /* Zmniejszyłem wysokość dla lepszego dopasowania */
+    align-items: center; /* Wyśrodkowanie w pionie */
+    width: max-content;
+    /* ZMIANA: Poprawiona animacja dla nieskończonej pętli */
     animation: ticker-scroll 60s linear infinite;
-    
-    /* NOWA INTERAKCJA: Kursor informuje o możliwości przeciągania */
     cursor: grab;
-    user-select: none; /* Zapobiega zaznaczaniu tekstu podczas przeciągania */
+    user-select: none;
 }
 
-/* Zmieniamy kursor, gdy myszka jest wciśnięta */
+.ticker-track:hover {
+    animation-play-state: paused;
+}
+
 .ticker-track.grabbing {
     cursor: grabbing;
 }
@@ -40,68 +39,64 @@
     justify-content: center;
     align-items: center;
     gap: 20px;
-    transition: transform 0.3s ease; /* Dodajemy przejście dla hover */
+    transition: transform 0.3s ease;
 }
 
-/* ZMIANA: Lekkie powiększenie na hover */
 .ticker-item:hover {
     transform: scale(1.05);
 }
 
 .ticker-item img {
-    /* ZMIANA: Powiększamy logo */
     height: 45px;
     max-width: 120px;
     object-fit: contain;
-    /* Usuwamy wszystkie filtry, aby pokazać oryginalne kolory */
     filter: none;
 }
 
 .ticker-item-name {
-    /* ZMIANA: Napis jest teraz biały */
     color: var(--color-text);
     font-size: 1.2rem;
     font-weight: 500;
     white-space: nowrap;
 }
 
-/* Animacja wciąż działa na desktopie, ale teraz można ją też przeciągać */
+/* ZMIANA: Poprawiona animacja */
 @keyframes ticker-scroll {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); } /* Pętla działa dzięki zduplikowanym logo */
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        /* Przesuwamy się o 50% szerokości, co odpowiada jednemu zestawowi logo */
+        transform: translateX(-50%);
+    }
 }
 
-
-/* === NOWE STYLE RESPONSIVE DLA TELEFONU === */
-
+/* === STYLE RESPONSIVE DLA TELEFONU === */
 @media (max-width: 768px) {
     .ticker-section {
-        padding: 50px 0;
+        padding: 20px 0;
     }
 
     .ticker-wrap {
-        /* Włączamy natywne przewijanie dotykowe */
+        /* ZMIANA: Pozwalamy na ręczne przewijanie ORAZ zachowujemy maskę */
         overflow-x: auto;
-        /* Ukrywamy pasek przewijania */
-        -ms-overflow-style: none;  /* IE and Edge */
-        scrollbar-width: none;  /* Firefox */
+        -ms-overflow-style: none;
+        scrollbar-width: none;
     }
     .ticker-wrap::-webkit-scrollbar {
-        display: none; /* Chrome, Safari, Opera */
+        display: none;
     }
 
     .ticker-track {
-        /* Wyłączamy automatyczną animację i interakcję z myszką na mobile */
-        animation: none;
-        cursor: default;
-        /* Używamy paddingu zamiast gap dla lepszej kontroli na krawędziach */
+        /* ZMIANA: Animacja jest teraz aktywna również na telefonie */
+        animation: ticker-scroll 40s linear infinite; /* Leci trochę szybciej */
         gap: 0;
         padding: 0 20px;
     }
     
     .ticker-item {
         gap: 15px;
-        padding: 0 25px; /* Dodajemy odstęp między elementami */
+        padding: 0 25px;
     }
 
     .ticker-item img {

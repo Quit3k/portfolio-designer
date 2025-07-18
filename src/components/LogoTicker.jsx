@@ -1,7 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import './LogoTicker.css';
 
-// Importy logo - upewnij się, że masz te pliki
+// Importy logo
 import premiereProLogo from '../assets/logos/premiere-pro.svg';
 import figmaLogo from '../assets/logos/figma.svg';
 import capcutLogo from '../assets/logos/capcut2.svg';
@@ -23,9 +23,9 @@ const logos = [
 ];
 
 const LogoTicker = () => {
-  const extendedLogos = [...logos, ...logos]; // Duplikujemy dla płynnej pętli
-  
-  // === NOWA LOGIKA DLA PRZECIĄGANIA MYSZKĄ ===
+  // ZMIANA: Upewniamy się, że duplikujemy listę DWA razy dla płynnej pętli
+  const extendedLogos = [...logos, ...logos];
+
   const trackRef = useRef(null);
   const [isDown, setIsDown] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -52,7 +52,7 @@ const LogoTicker = () => {
     if (!isDown) return;
     e.preventDefault();
     const x = e.pageX - trackRef.current.offsetLeft;
-    const walk = (x - startX) * 2; // Mnożnik dla szybszego przewijania
+    const walk = (x - startX) * 2;
     trackRef.current.scrollLeft = scrollLeft - walk;
   };
 
