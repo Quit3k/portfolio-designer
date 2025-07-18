@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './Portfolio.css';
 import Modal from './Modal';
-// ZMIANA: Importujemy lokalne zdjęcie, aby React mógł go użyć
 import dolinaPoster from '../assets/dolina.png';
 
 const caseStudiesData = [
@@ -9,7 +8,6 @@ const caseStudiesData = [
     title: "Kampania Wideo dla 'Słodka Dolina'",
     category: 'Marketing Wideo',
     mediaType: 'video',
-    // ZMIANA: Używamy zaimportowanego zdjęcia jako postera
     posterUrl: dolinaPoster,
     mediaUrl: 'https://player.vimeo.com/video/22439234?h=5aca5d7be9&autoplay=1&loop=1&title=0&byline=0&portrait=0',
     problem: 'Klient "Słodka Dolina", producent luksusowych bakalii, borykał się z niską rozpoznawalnością nowej linii produktów w okresie przedświątecznym.',
@@ -37,7 +35,6 @@ const caseStudiesData = [
     category: 'Branding',
     mediaType: 'image',
     posterUrl: null,
-    // ZMIANA: Podmieniamy link na nowy, działający
     mediaUrl: 'https://images.unsplash.com/photo-1559925393-8be0ec4767c8?q=80&w=1974&auto=format&fit=crop',
     problem: 'Lokalna palarnia kawy "Czarna Kawa" chciała odświeżyć swój wizerunek, aby lepiej trafiać do młodszej grupy docelowej i wyróżnić się na tle sieciówek.',
     solution: [
@@ -71,10 +68,14 @@ const Portfolio = () => {
               <div className="case-study-card fade-in" key={index}>
                 <div className="case-study-media" style={{backgroundImage: `url(${study.posterUrl || study.mediaUrl})`}}>
                   <div className="media-overlay">
-                    <button className="view-button" onClick={() => openModal({ type: study.mediaType, url: study.mediaUrl })}>
-                      Zobacz
-                    </button>
-                  </div>
+  <div className="hover-indicator">
+    {/* ZMIANA: Nowa, czytelna ikona oka */}
+    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+  </div>
+  <button className="view-button" onClick={() => openModal({ type: study.mediaType, url: study.mediaUrl })}>
+    Zobacz
+  </button>
+</div>
                 </div>
                 <div className="case-study-description">
                   <span className="case-study-category">{study.category}</span>

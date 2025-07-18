@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import Process from './components/Process';
 import Services from './components/Services';
 import LogoTicker from './components/LogoTicker';
+import Testimonials from './components/Testimonials';
 import Portfolio from './components/Portfolio';
 import StatsBanner from './components/StatsBanner';
 import Contact from './components/Contact';
@@ -42,6 +43,7 @@ function App() {
         <Process />
         <LogoTicker />
         <Portfolio />
+        <Testimonials />
         <Contact />
       </main>
       <Footer />

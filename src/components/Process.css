@@ -1,6 +1,14 @@
-.process-section {
+/* .process-section {
   padding: 100px 0;
   background: radial-gradient(circle at center, #382C25 0%, #110f12 85%);
+  position: relative;
+  overflow: hidden;
+} */
+
+.process-section {
+  padding: 100px 0;
+  /* ZMIANA: Definiujemy kształt jako elipsę o konkretnym rozmiarze */
+  background: radial-gradient(ellipse 55% 80% at center, #382C25 0%, #110f12 85%);
   position: relative;
   overflow: hidden;
 }
