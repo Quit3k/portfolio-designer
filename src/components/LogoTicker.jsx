@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import './LogoTicker.css';
 
 // Importy logo
@@ -23,49 +23,12 @@ const logos = [
 ];
 
 const LogoTicker = () => {
-  // ZMIANA: Upewniamy się, że duplikujemy listę DWA razy dla płynnej pętli
+  // Duplikujemy listę DWA razy - to klucz do nieskończonej pętli
   const extendedLogos = [...logos, ...logos];
-
-  const trackRef = useRef(null);
-  const [isDown, setIsDown] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
-
-  const handleMouseDown = (e) => {
-    setIsDown(true);
-    trackRef.current.classList.add('grabbing');
-    setStartX(e.pageX - trackRef.current.offsetLeft);
-    setScrollLeft(trackRef.current.scrollLeft);
-  };
-
-  const handleMouseLeave = () => {
-    setIsDown(false);
-    trackRef.current.classList.remove('grabbing');
-  };
-
-  const handleMouseUp = () => {
-    setIsDown(false);
-    trackRef.current.classList.remove('grabbing');
-  };
-
-  const handleMouseMove = (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - trackRef.current.offsetLeft;
-    const walk = (x - startX) * 2;
-    trackRef.current.scrollLeft = scrollLeft - walk;
-  };
 
   return (
     <div className="ticker-section">
-      <div 
-        className="ticker-wrap"
-        ref={trackRef}
-        onMouseDown={handleMouseDown}
-        onMouseLeave={handleMouseLeave}
-        onMouseUp={handleMouseUp}
-        onMouseMove={handleMouseMove}
-      >
+      <div className="ticker-wrap">
         <div className="ticker-track">
           {extendedLogos.map((logo, index) => (
             <div className="ticker-item" key={index}>

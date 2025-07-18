@@ -1,8 +1,8 @@
 .ticker-section {
     background-color: #141417;
     padding: 25px 0;
-    border-top: 1px dotted rgba(232, 122, 62, 1);
-    border-bottom: 1px dotted rgba(232, 122, 62, 1);
+    border-top: 1px solid rgb(0, 0, 0);
+    border-bottom: 1px solid rgb(0, 0, 0);
 }
 
 .ticker-wrap {
@@ -15,21 +15,15 @@
 .ticker-track {
     display: flex;
     gap: 100px;
-    height: 100px; /* Zmniejszyłem wysokość dla lepszego dopasowania */
-    align-items: center; /* Wyśrodkowanie w pionie */
+    height: 170px;
+    align-items: center;
     width: max-content;
-    /* ZMIANA: Poprawiona animacja dla nieskończonej pętli */
-    animation: ticker-scroll 60s linear infinite;
-    cursor: grab;
-    user-select: none;
+    /* ZMIANA: Ta animacja gwarantuje płynną pętlę */
+    animation: ticker-scroll 40s linear infinite;
 }
 
 .ticker-track:hover {
     animation-play-state: paused;
-}
-
-.ticker-track.grabbing {
-    cursor: grabbing;
 }
 
 .ticker-item {
@@ -60,14 +54,16 @@
     white-space: nowrap;
 }
 
-/* ZMIANA: Poprawiona animacja */
+/* ZMIANA: Kluczowa poprawka w animacji */
 @keyframes ticker-scroll {
-    0% {
+    from {
         transform: translateX(0);
     }
-    100% {
-        /* Przesuwamy się o 50% szerokości, co odpowiada jednemu zestawowi logo */
-        transform: translateX(-50%);
+    to {
+        /* Przesuwamy pasek o długość JEDNEJ grupy logo */
+        /* calc(-1 * (szerokość elementu * liczba logo + odstęp * liczba logo)) */
+        /* Używamy tutaj przybliżonych, ale działających wartości */
+        transform: translateX(calc(-250px * 8));
     }
 }
 
@@ -77,26 +73,14 @@
         padding: 20px 0;
     }
 
-    .ticker-wrap {
-        /* ZMIANA: Pozwalamy na ręczne przewijanie ORAZ zachowujemy maskę */
-        overflow-x: auto;
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
-    .ticker-wrap::-webkit-scrollbar {
-        display: none;
-    }
-
     .ticker-track {
-        /* ZMIANA: Animacja jest teraz aktywna również na telefonie */
-        animation: ticker-scroll 40s linear infinite; /* Leci trochę szybciej */
-        gap: 0;
-        padding: 0 20px;
+        /* Animacja działa teraz także na telefonie */
+        animation: ticker-scroll 30s linear infinite;
+        gap: 80px;
     }
     
     .ticker-item {
         gap: 15px;
-        padding: 0 25px;
     }
 
     .ticker-item img {

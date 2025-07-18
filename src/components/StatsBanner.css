@@ -2,9 +2,9 @@
     /* background-color: #00000; */
     /* background-color: #141417; */
     background: #141417;
-    padding: 70px 0;
-    border-top: 1px dotted rgba(232, 121, 62, 0.705);
-    border-bottom: 1px dotted rgba(232, 122, 62, 0.705);
+    padding: 60px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.705);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.705);
 }
 
 .stats-container {
